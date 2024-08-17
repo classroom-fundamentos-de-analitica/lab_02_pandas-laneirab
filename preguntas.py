@@ -117,7 +117,7 @@ def pregunta_07():
     Name: _c2, dtype: int64
     """
     suma_c2 = tbl0.groupy('_c1').sum()['_c2']
-    return suma_c2
+    return 
 
 
 def pregunta_08():
@@ -137,7 +137,7 @@ def pregunta_08():
     """
     tbl0['suma'] = tbl0['_c0'] + tbl0['_c2']
 
-    return tbl0
+    return 
 
 
 def pregunta_09():
@@ -157,7 +157,7 @@ def pregunta_09():
     """
     tbl0['year'] = pd.to_datetime(tbl0['_c3']).dt.year
 
-    return tbl0
+    return 
 
 
 def pregunta_10():
@@ -175,7 +175,7 @@ def pregunta_10():
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
     tabla_c1_c2 = tbl0.groupby('_c1').apply(lambda x: ':'.join(x['_c2'].astype(str)))
-    return tabla_c1_c2
+    return 
 
 
 def pregunta_11():
@@ -195,7 +195,7 @@ def pregunta_11():
     39   39    a,d,f
     """
     tabla_c0_c4 = tbl1.groupby('_c0').apply(lambda x: ','.join(x['_c4']))
-    return tabla_c0_c4
+    return 
 
 
 def pregunta_12():
@@ -214,7 +214,7 @@ def pregunta_12():
     39   39                    ggg:3,hhh:8,jjj:5
     """
     tabla_c0_c5 = tbl2.groupby('_c0').apply(lambda x: ','.join(x['_c5a'] + ':' + x['_c5b'].astype(str)))
-    return tabla_c0_c5
+    return 
 
 
 def pregunta_13():
@@ -232,4 +232,4 @@ def pregunta_13():
     Name: _c5b, dtype: int64
     """
     suma_tbl2_c5b = pd.merge(tbl0, tbl2, on='_c0')
-    return suma_tbl2_c5b
+    return 
