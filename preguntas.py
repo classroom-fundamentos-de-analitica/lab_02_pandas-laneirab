@@ -23,7 +23,7 @@ def pregunta_01():
 
     """
     filas = len(tbl0)
-    return filas
+    return 
 
 
 def pregunta_02():
@@ -35,7 +35,7 @@ def pregunta_02():
 
     """
     columnas = len(tbl0.columns)
-    return columnas
+    return 
 
 
 def pregunta_03():
@@ -53,7 +53,7 @@ def pregunta_03():
 
     """
     registros_columna = tbl0['_c1'].value_counts()
-    return registros_columna 
+    return 
 
 
 def pregunta_04():
@@ -69,7 +69,7 @@ def pregunta_04():
     Name: _c2, dtype: float64
     """
     promedio_c2 = tbl0.groupby('_c1').mean()['_c2']
-    return promedio_c2
+    return 
 
 
 def pregunta_05():
@@ -87,7 +87,7 @@ def pregunta_05():
     Name: _c2, dtype: int64
     """
     maximo_c2 = tbl0.groupby('_c1').max()['_c2']
-    return maximo_c2
+    return 
 
 
 def pregunta_06():
@@ -100,7 +100,7 @@ def pregunta_06():
 
     """
     orden_columnas_c4 = tbl1['_c4'].unique()
-    return orden_columnas_c4
+    return
 
 
 def pregunta_07():
