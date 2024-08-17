@@ -70,8 +70,7 @@ def pregunta_04():
     E    4.785714
     Name: _c2, dtype: float64
     """
-    promedio_c2 = tbl0.groupby('_c1')['_c2'].mean
- 
+    promedio_c2 = tbl0.groupby('_c1')['_c2'].mean()
     return promedio_c2
 
 
@@ -90,7 +89,7 @@ def pregunta_05():
     Name: _c2, dtype: int64
     """
     maximo_c2 = tbl0.groupby('_c1')['_c2'].max()
-
+    
     return maximo_c2
 
 
@@ -121,7 +120,8 @@ def pregunta_07():
     E    67
     Name: _c2, dtype: int64
     """
-    suma_c2 = tbl0.groupy('_c1')['_c2'].sum()
+    copy = tbl0
+    suma_c2 = copy.groupy('_c1')['_c2'].sum()
 
     return suma_c2
 
@@ -160,7 +160,8 @@ def pregunta_09():
     39   39   E    5  1998-01-26  1998
 
     """
-    tbl0['year'] = pd.to_datetime(tbl0['_c3']).dt.year
+    copy = tbl0
+    copy = copy.assign(year=copy['_c3'].str.split('-').str[0])
     return tbl0
 
 
@@ -198,7 +199,9 @@ def pregunta_11():
     38   38      d,e
     39   39    a,d,f
     """
-    tabla_c0_c4 = tbl1.groupby('_c0')('_c4').apply(lambda x: ','.join(sorted(x))).reset_index()
+    copy = tbl1
+    tabla_c0_c4 = copy.groupby('_c0')('_c4').apply(lambda x: ','.join(sorted(x))).reset_index()
+ 
     return tabla_c0_c4
 
 
@@ -217,7 +220,9 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
-    tabla_c0_c5 = tbl2.groupby('_c0').apply(lambda x: ','.join(x['_c5a'] + ':' + x['_c5b'].astype(str)))
+    # Unir los valores de _c5a y _c5b con ':' y luego agruparlos por cada valor único de _c0 y unirlos en una lista separada por ','
+    tbl2['_c5'] = tbl2['_c5a'] + ':' + tbl2['_c5b'].astype(str)
+    tabla_c0_c5 = tbl2.groupby('_c0')['_c5'].apply(lambda x: ','.join(sorted(x))).reset_index()
 
     return tabla_c0_c5
 
@@ -236,5 +241,6 @@ def pregunta_13():
     E    275
     Name: _c5b, dtype: int64
     """
-    suma_tbl2_c5b = pd.merge(tbl0, tbl2, on='_c0')
-    return 
+    union = pd.merge(tbl0, tbl2, on='_c0')
+    suma_tbl2_c5b = union.groupby('_c1')['_c5b'].sum()
+    return suma_tbl2_c5b
