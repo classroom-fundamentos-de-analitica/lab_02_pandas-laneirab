@@ -22,9 +22,14 @@ def pregunta_01():
     40
 
     """
+<<<<<<< HEAD
     filas = tbl0.shape[0]
     
     return filas
+=======
+    filas = len(tbl0)
+    return 
+>>>>>>> f73900108b444bf7fc8f6989bc82fc933f7552c1
 
 
 def pregunta_02():
@@ -35,8 +40,13 @@ def pregunta_02():
     4
 
     """
+<<<<<<< HEAD
     columnas = tbl0.shape[1]
     return columnas
+=======
+    columnas = len(tbl0.columns)
+    return 
+>>>>>>> f73900108b444bf7fc8f6989bc82fc933f7552c1
 
 
 def pregunta_03():
@@ -53,9 +63,14 @@ def pregunta_03():
     Name: _c1, dtype: int64
 
     """
+<<<<<<< HEAD
     registros_columna = tbl0['_c1'].value_counts().sort_index()
 
     return registros_columna 
+=======
+    registros_columna = tbl0['_c1'].value_counts()
+    return 
+>>>>>>> f73900108b444bf7fc8f6989bc82fc933f7552c1
 
 
 def pregunta_04():
@@ -70,9 +85,14 @@ def pregunta_04():
     E    4.785714
     Name: _c2, dtype: float64
     """
+<<<<<<< HEAD
     promedio_c2 = tbl0.groupby('_c1')['_c2'].mean
  
     return promedio_c2
+=======
+    promedio_c2 = tbl0.groupby('_c1').mean()['_c2']
+    return 
+>>>>>>> f73900108b444bf7fc8f6989bc82fc933f7552c1
 
 
 def pregunta_05():
@@ -89,9 +109,14 @@ def pregunta_05():
     E    9
     Name: _c2, dtype: int64
     """
+<<<<<<< HEAD
     maximo_c2 = tbl0.groupby('_c1')['_c2'].max()
 
     return maximo_c2
+=======
+    maximo_c2 = tbl0.groupby('_c1').max()['_c2']
+    return 
+>>>>>>> f73900108b444bf7fc8f6989bc82fc933f7552c1
 
 
 def pregunta_06():
@@ -103,9 +128,14 @@ def pregunta_06():
     ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
     """
+<<<<<<< HEAD
     orden_columnas_c4 = sorted(tbl1['_c4'].str.upper().unique())
     
     return orden_columnas_c4
+=======
+    orden_columnas_c4 = tbl1['_c4'].unique()
+    return
+>>>>>>> f73900108b444bf7fc8f6989bc82fc933f7552c1
 
 
 def pregunta_07():
@@ -121,9 +151,14 @@ def pregunta_07():
     E    67
     Name: _c2, dtype: int64
     """
+<<<<<<< HEAD
     suma_c2 = tbl0.groupy('_c1')['_c2'].sum()
 
     return suma_c2
+=======
+    suma_c2 = tbl0.groupy('_c1').sum()['_c2']
+    return 
+>>>>>>> f73900108b444bf7fc8f6989bc82fc933f7552c1
 
 
 def pregunta_08():
@@ -142,7 +177,12 @@ def pregunta_08():
 
     """
     tbl0['suma'] = tbl0['_c0'] + tbl0['_c2']
+<<<<<<< HEAD
     return tbl0
+=======
+
+    return 
+>>>>>>> f73900108b444bf7fc8f6989bc82fc933f7552c1
 
 
 def pregunta_09():
@@ -161,7 +201,12 @@ def pregunta_09():
 
     """
     tbl0['year'] = pd.to_datetime(tbl0['_c3']).dt.year
+<<<<<<< HEAD
     return tbl0
+=======
+
+    return 
+>>>>>>> f73900108b444bf7fc8f6989bc82fc933f7552c1
 
 
 def pregunta_10():
@@ -178,8 +223,13 @@ def pregunta_10():
     3   D                  1:2:3:5:5:7
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
+<<<<<<< HEAD
     tabla_c1_c2 = tbl0.groupby('_c1')['_c2'].apply(lambda x: ':'.join(sorted(x.astype(str)))).reset_index().set_index('_c1')
     return tabla_c1_c2
+=======
+    tabla_c1_c2 = tbl0.groupby('_c1').apply(lambda x: ':'.join(x['_c2'].astype(str)))
+    return 
+>>>>>>> f73900108b444bf7fc8f6989bc82fc933f7552c1
 
 
 def pregunta_11():
@@ -198,8 +248,13 @@ def pregunta_11():
     38   38      d,e
     39   39    a,d,f
     """
+<<<<<<< HEAD
     tabla_c0_c4 = tbl1.groupby('_c0')('_c4').apply(lambda x: ','.join(sorted(x))).reset_index()
     return tabla_c0_c4
+=======
+    tabla_c0_c4 = tbl1.groupby('_c0').apply(lambda x: ','.join(x['_c4']))
+    return 
+>>>>>>> f73900108b444bf7fc8f6989bc82fc933f7552c1
 
 
 def pregunta_12():
@@ -218,8 +273,12 @@ def pregunta_12():
     39   39                    ggg:3,hhh:8,jjj:5
     """
     tabla_c0_c5 = tbl2.groupby('_c0').apply(lambda x: ','.join(x['_c5a'] + ':' + x['_c5b'].astype(str)))
+<<<<<<< HEAD
 
     return tabla_c0_c5
+=======
+    return 
+>>>>>>> f73900108b444bf7fc8f6989bc82fc933f7552c1
 
 
 def pregunta_13():
@@ -237,4 +296,4 @@ def pregunta_13():
     Name: _c5b, dtype: int64
     """
     suma_tbl2_c5b = pd.merge(tbl0, tbl2, on='_c0')
-    return suma_tbl2_c5b
+    return 
