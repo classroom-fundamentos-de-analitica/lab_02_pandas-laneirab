@@ -120,8 +120,7 @@ def pregunta_07():
     E    67
     Name: _c2, dtype: int64
     """
-    copy = tbl0
-    suma_c2 = copy.groupy('_c1')['_c2'].sum()
+    suma_c2 = tbl0[["_c1","_c2"]].groupby(["_c1"]).sum().squeeze()
 
     return suma_c2
 
@@ -160,8 +159,8 @@ def pregunta_09():
     39   39   E    5  1998-01-26  1998
 
     """
-    copy = tbl0
-    copy = copy.assign(year=copy['_c3'].str.split('-').str[0])
+    tbl0["year"] = tbl0["_c3"].str.slice(0,4)
+    
     return tbl0
 
 
@@ -199,10 +198,9 @@ def pregunta_11():
     38   38      d,e
     39   39    a,d,f
     """
-    copy = tbl1
-    tabla_c0_c4 = copy.groupby('_c0')('_c4').apply(lambda x: ','.join(sorted(x))).reset_index()
- 
-    return tabla_c0_c4
+    copytabla = tbl1.copy().set_index("_c4").groupby("_c0")
+    tablanueva = {g:",".join(sorted([str(x) for x in c])) for g,c in copytabla.groups.items()}
+    return pd.DataFrame({"_c0":tablanueva.keys(), "_c4":tablanueva.values()})
 
 
 def pregunta_12():
